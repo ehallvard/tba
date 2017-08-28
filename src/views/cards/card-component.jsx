@@ -41,7 +41,7 @@ export default class CardComponent extends React.Component<{}, {}> {
           <img className="card__img" src={imgUrl} />
         </div>
         <div className="card__face card__back" onClick={this.cardClickHandler}>
-          <p>
+          <p className="card__paragraph">
             {article.description}
           </p>
           <a target="_blank" href={article.url}>

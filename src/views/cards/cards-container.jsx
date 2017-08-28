@@ -18,7 +18,7 @@ export class CardsContainer extends React.Component<{}, {}> {
     const { articles } = this.props;
     return (
       <div>
-        <h1>Nyheter</h1>
+        <h1 className="page__header">Nyheter</h1>
         <div className="cards">
           {articles
             ? articles.map((article, index) => {
