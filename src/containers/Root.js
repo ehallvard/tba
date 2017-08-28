@@ -2,14 +2,12 @@
 
 import * as React from "react";
 import { Provider } from "react-redux";
-import App from "./App.jsx";
-import configureStore from '../redux/configureStore';
+import App from "./App";
 
-export const Root = (props) => {
-  const store = configureStore();
+export const Root = ({store, actions}) => {
   return (
     <Provider store={store}>
-      <App />
+      <App actions={actions} />
     </Provider>
   );
 };

@@ -1,23 +1,52 @@
-const path = require("path");
+const path = require('path');
+const webpack = require('webpack');
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: "./public/index.html",
-  filename: "index.html",
-  inject: "body"
+  template: './public/index.html',
+  filename: 'index.html',
+  inject: 'body',
 });
+const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin(
+  'commons.js'
+);
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    index: './src/index.js',
+    home: './src/views/Home/Home.jsx',
+  },
   output: {
-    path: path.resolve("dist"),
-    filename: "index_bundle.js"
+    path: __dirname + 'dist',
+    filename: '[name].js',
+  },
+  resolve: {
+    modules: [path.resolve('src'), path.resolve('node_modules')],
+    extensions: ['*', '.js'],
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: "babel-loader", exclude: /node_modules/ }
-    ]
+      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader', // creates style nodes from JS strings
+          },
+          {
+            loader: 'css-loader', // translates CSS into CommonJS
+          },
+          {
+            loader: 'sass-loader', // compiles Sass to CSS
+          },
+        ],
+      },
+    ],
   },
-  plugins: [HtmlWebpackPluginConfig]
+  devServer: {
+    historyApiFallback: true,
+  },
+  plugins: [HtmlWebpackPluginConfig, CommonsChunkPlugin],
+  devtool: 'eval-source-map',
 };

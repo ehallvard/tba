@@ -1,21 +1,19 @@
 // @flow
 import * as React from "react";
-import { Route, Switch } from "react-router";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Index } from "./Index.jsx";
-import Home from "../views/Home/Home";
+import CardsContainer from "../views/cards/cards-container.jsx";
 // import About from "../views/About/About";
 
 export class App extends React.Component<{}, {}> {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
-          <Route exact path="/" component={Index} />
-          <Route path="/home" component={Home} />
-            {/* <Route path="about" component={About} /> */}
+          {/* <Route exact path="/" component={Index} /> */}
+          <Route path="*" component={CardsContainer} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

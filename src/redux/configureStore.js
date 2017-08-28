@@ -1,14 +1,19 @@
-import { createStore, Store, bindActionCreators } from "redux";
-import * as currentTime from "./modules/currentTime";
+import { rootReducer, initialState } from "./reducers";
+import { createStore, applyMiddleware } from 'redux';
+import apiMiddleware from './apiMiddleware';
+import loggingMiddleware from './loggingMiddleware';
 
-export const configureStore: Store<{}> = (): Store<{}> => {
-  const store: Store<{}> = createStore(currentTime.reducer);
+export const store: Store<{}> = (): Store<{}> => {
+  const store: Store<{}> = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(
+      apiMiddleware,
+      loggingMiddleware
+    )
+  );
 
-  const actions = {
-    currentTime: bindActionCreators(currentTime.actions, store.dispatch)
-  };
-
-  return { store, actions };
+  return store;
 };
 
-export default configureStore;
+export default store;
