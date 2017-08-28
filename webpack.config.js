@@ -14,7 +14,6 @@ const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin(
 module.exports = {
   entry: {
     index: './src/index.js',
-    home: './src/views/Home/Home.jsx',
   },
   output: {
     path: __dirname + 'dist',
