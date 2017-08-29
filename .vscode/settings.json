@@ -1,3 +1,8 @@
 {
-    "javascript.validate.enable": false
+    "prettier.singleQuote": true,
+    "prettier.printWidth": 140,
+    "prettier.trailingComma": "es5",
+    "prettier.jsonEnable": [],
+    "editor.tabSize": 2,
+    "javascript.validate.enable": false    
 }

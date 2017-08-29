@@ -7,9 +7,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body',
 });
-const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin(
-  'commons.js'
-);
+const CommonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin('commons.js');
 
 module.exports = {
   entry: {
@@ -31,13 +29,19 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'style-loader', // creates style nodes from JS strings
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader', // translates CSS into CommonJS
+            loader: 'css-loader',
           },
           {
-            loader: 'sass-loader', // compiles Sass to CSS
+            loader: 'postcss-loader',
+            options: {
+              plugins: [require('autoprefixer')({ browsers: ['last 2 versions', 'safari > 7', 'iOS > 7'] })],
+            },
+          },
+          {
+            loader: 'sass-loader',
           },
         ],
       },

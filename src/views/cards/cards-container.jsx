@@ -1,10 +1,18 @@
+//@flow
+
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from './cards-core';
 import CardComponent from './card-component.jsx';
+import { article } from '../../entities';
 
-export class CardsContainer extends React.Component<{}, {}> {
-  constructor(props) {
+type CardsContainerProps = {
+  fetchNews: () => void,
+  articles: article[],
+};
+
+export class CardsContainer extends React.Component<CardsContainerProps, {}> {
+  constructor(props: CardsContainerProps) {
     super(props);
   }
 

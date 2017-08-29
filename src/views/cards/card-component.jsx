@@ -1,17 +1,28 @@
+//@flow
+
 import * as React from 'react';
 import classNames from 'classnames';
+import { article } from '../../entities';
 
-export default class CardComponent extends React.Component<{}, {}> {
-  constructor(props) {
+type CardComponentProps = {
+  article: article,
+};
+
+type CardComponentState = {
+  isFlipped: boolean,
+};
+
+export default class CardComponent extends React.Component<CardComponentProps, CardComponentState> {
+  constructor(props: CardComponentProps) {
     super(props);
     this.state = {
       isFlipped: false,
     };
-    this.cardClickHandler = this.cardClickHandler.bind(this);
+    (this: any).cardClickHandler = this.cardClickHandler.bind(this);
   }
 
-  cardClickHandler(event) {
-    let shouldFlip = true;
+  cardClickHandler(event: Event): void {
+    let shouldFlip: boolean = true;
     if (event) {
       const target = event.target;
       if (target.tagName === 'A') {
@@ -28,8 +39,7 @@ export default class CardComponent extends React.Component<{}, {}> {
 
   render() {
     const { article } = this.props;
-    const imgUrl = article.urlToImage;
-    const cardClassNames = classNames('card', {
+    const cardClassNames: string = classNames('card', {
       'card--rotate': this.state.isFlipped,
     });
     return (
@@ -38,15 +48,14 @@ export default class CardComponent extends React.Component<{}, {}> {
           <h3 className="card__heading">
             {article.title}
           </h3>
-          <img className="card__img" src={imgUrl} />
+          <img className="card__img" src={article.urlToImage} />
         </div>
         <div className="card__face card__back" onClick={this.cardClickHandler}>
           <p className="card__paragraph">
             {article.description}
           </p>
           <a target="_blank" href={article.url}>
-            Go to article{' '}
-            <span className="visuallyhidden">(Opens a new tab)</span>
+            Go to article <span className="visuallyhidden">(Opens a new tab)</span>
           </a>
         </div>
       </div>
