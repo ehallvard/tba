@@ -25,7 +25,7 @@ export class CardsContainer extends React.Component<CardsContainerProps, {}> {
   render() {
     const { articles } = this.props;
     return (
-      <div>
+      <article className="page">
         <h1 className="page__header">Nyheter</h1>
         <div className="cards">
           {articles
@@ -34,7 +34,7 @@ export class CardsContainer extends React.Component<CardsContainerProps, {}> {
               })
             : null}
         </div>
-      </div>
+      </article>
     );
   }
 }

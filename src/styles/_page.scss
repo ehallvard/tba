@@ -1,0 +1,27 @@
+.page {
+    width: $one-col;
+    margin: 0 auto;
+
+    &__header {
+        margin-left: 1.5rem;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (min-width: $two-col) {
+    .page {
+        width: $two-col;
+    }
+}
+
+@media screen and (min-width: $three-col) {
+    .page {
+        width: $three-col;
+    }
+}
+
+@media screen and (min-width: $four-col) {
+    .page {
+        width: $four-col;
+    }
+}

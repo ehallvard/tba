@@ -42,19 +42,21 @@ export default class CardComponent extends React.Component<CardComponentProps, C
     const cardClassNames: string = classNames('card', {
       'card--rotate': this.state.isFlipped,
     });
+    const tabIndex = this.state.isFlipped ? 0 : -1;
     return (
       <div className={cardClassNames}>
+        <button className="card__flip-button" aria-label="Flip card" onClick={this.cardClickHandler}><i className="fa fa-arrow-right"></i></button>
         <div className="card__face card__front" onClick={this.cardClickHandler}>
+          <img className="card__img" src={article.urlToImage} />
           <h3 className="card__heading">
             {article.title}
           </h3>
-          <img className="card__img" src={article.urlToImage} />
-        </div>
-        <div className="card__face card__back" onClick={this.cardClickHandler}>
           <p className="card__paragraph">
             {article.description}
           </p>
-          <a target="_blank" href={article.url}>
+        </div>
+        <div className="card__face card__back" onClick={this.cardClickHandler}>
+          <a className="card__anchor" target="_blank" href={article.url} tabIndex={tabIndex}>
             Go to article <span className="visuallyhidden">(Opens a new tab)</span>
           </a>
         </div>

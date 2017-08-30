@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 body {
-    background: #f6f7ff;
+    background: #E3E3E3;
     font-family: 'Lato', sans-serif;
 }
 
@@ -13,7 +13,7 @@ h5 {
     margin: 0;
 }
 
-.page__header {
-    margin-left: 1.5rem;
-    margin-top: 2rem;
-}
+$one-col: 20rem;
+$two-col: 40rem;
+$three-col: 59rem;
+$four-col: 79rem;
