@@ -43,6 +43,7 @@
     &__back {
         transform: rotateY(180deg);
         z-index: 0;
+        border: 1px solid #bdbdbd;
     }
 
     &__img {
