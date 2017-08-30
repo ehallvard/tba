@@ -11,20 +11,11 @@ function receiveNews(source, json) {
   return {
     type: RECEIVE_NEWS,
     source,
-    payload: json.articles,
+    articles: json.articles,
   };
 }
 
 export function fetchNews(source = 'cnn') {
-  // const newsHost = 'https://newsapi.org/v1/articles';
-  // return {
-  //   type: types.FETCH_NEWS,
-  //   meta: {
-  //     type: 'api',
-  //     url: `${newsHost}?source=${source}&apiKey=${apiKey}`,
-  //   },
-  // };
-
   return function(dispatch) {
     dispatch(requestNews(source));
     const apiKey = '59cc58874546457f96a87b784cddf8d4';
